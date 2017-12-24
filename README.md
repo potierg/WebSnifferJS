@@ -13,7 +13,7 @@ npm install --save web-sniffer-js
 Download content of link and pass to exec().
 
 ``` js
-const webSniffer = require('web-sniffer');
+const webSniffer = require('web-sniffer-js');
 
 const sniffer = new webSniffer;
  

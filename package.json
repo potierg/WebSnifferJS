@@ -1,5 +1,5 @@
 {
-    "name": "WebSnifferJS",
+    "name": "web-sniffer-js",
     "version": "1.0.0",
     "description": "Simple HTML Parser to JS Object",
     "main": "web-sniffer.min.js",

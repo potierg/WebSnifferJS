@@ -27,10 +27,7 @@ sniffer.exec(HtmlContent, HtmlObject => {
 ## How is it works ?
 
 One entites :
-* HtmlContent (default instance never use by you)
-
-The principe is to run asynchronouse (or not) function easily and manage them when the worker has finished with a callback.
-Launch any request on any element.
+* HtmlContent : the content of your HTML file.
 
 ## Functions
 

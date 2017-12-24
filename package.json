@@ -1,0 +1,33 @@
+{
+    "name": "WebSnifferJS",
+    "version": "1.0.0",
+    "description": "Simple HTML Parser to JS Object",
+    "main": "web-sniffer.min.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/potierg/WebSnifferJS.git"
+    },
+    "keywords": [
+      "javascript",
+      "nodejs",
+      "parser",
+      "html",
+      "object",
+      "array",
+      "callback",
+      "complete",
+      "worker",
+      "js",
+      "synch"
+    ],
+    "author": "potierg",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/potierg/WebSnifferJS/issues"
+    },
+    "homepage": "https://github.com/potierg/WebSnifferJS#readme"
+  }
+  

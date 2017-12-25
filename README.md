@@ -85,7 +85,6 @@ Return Object
 One entites :
 * HtmlContent : the content of your HTML file.{
 
-    "message":[
         {
             "name":"html",
             "content":[
@@ -360,9 +359,6 @@ One entites :
                 }
             ]
         }
-    ]
-
-}
 
 ## Functions
 

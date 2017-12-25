@@ -19,7 +19,7 @@ module.exports = function () {
                 html = html.slice(1);
             }
     
-            while (html.indexOf("<!--") === 1) {
+            while (html.indexOf("<!--") === 0) {
                 html = html.slice(html.indexOf("-->"));
             }
     

@@ -76,15 +76,6 @@ Return Object
 
 ``` json
 
-
-
-```
-
-## How is it works ?
-
-One entites :
-* HtmlContent : the content of your HTML file.{
-
         {
             "name":"html",
             "content":[
@@ -359,6 +350,14 @@ One entites :
                 }
             ]
         }
+
+
+```
+
+## How is it works ?
+
+One entites :
+* HtmlContent : the content of your HTML file.{
 
 ## Functions
 

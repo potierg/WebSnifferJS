@@ -367,9 +367,3 @@ Name | Available | Description | Additionnal
 exec(HtmlContent: `string`, callback: `function`) : `HtmlObject` | ALL | Parse HTML content
 
 ```
-
-## Exemples
-
-
-
-```

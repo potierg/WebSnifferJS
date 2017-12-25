@@ -76,171 +76,169 @@ Return Object
 
 ``` json
 
+{
+    "name":"html",
+    "content":[
+        "lang=\"en\"",
+        "prefix=\"og: http://ogp.me/ns#\"",
+        "class=\"screen-fill-root\""
+    ],
+    "is_end":false,
+    "next":[
         {
-            "name":"html",
-            "content":[
-                "lang=\"en\"",
-                "prefix=\"og: http://ogp.me/ns#\"",
-                "class=\"screen-fill-root\""
-            ],
+            "name":"head",
+            "content":null,
             "is_end":false,
             "next":[
                 {
-                    "name":"head",
+                    "name":"meta",
+                    "content":[
+                        "charset=\"utf-8\""
+                    ],
+                    "is_end":false,
+                    "value":"",
+                    "next":null
+                },
+                {
+                    "name":"title",
+                    "content":null,
+                    "is_end":false,
+                    "value":"npm"
+                },
+                {
+                    "name":"link",
+                    "content":[
+                        "rel=\"stylesheet\"",
+                        "media=\"all\"",
+                        "href=\"/static/css/components.css?last-changed=27945fe466447deb7646454bfc1909b9\""
+                    ],
+                    "is_end":true,
+                    "pos_end":119
+                },
+                {
+                    "name":"noscript",
                     "content":null,
                     "is_end":false,
                     "next":[
                         {
-                            "name":"meta",
+                            "name":"img",
                             "content":[
-                                "charset=\"utf-8\""
-                            ],
-                            "is_end":false,
-                            "value":"",
-                            "next":null
-                        },
-                        {
-                            "name":"title",
-                            "content":null,
-                            "is_end":false,
-                            "value":"npm"
-                        },
-                        {
-                            "name":"link",
-                            "content":[
-                                "rel=\"stylesheet\"",
-                                "media=\"all\"",
-                                "href=\"/static/css/components.css?last-changed=27945fe466447deb7646454bfc1909b9\""
+                                "height=\"1\"",
+                                "width=\"1\"",
+                                "style=\"display:none\"",
+                                "src=\"https://www.facebook.com/tr?id=278690589151673&ev=PageView&noscript=1\""
                             ],
                             "is_end":true,
-                            "pos_end":119
-                        },
-                        {
-                            "name":"noscript",
-                            "content":null,
-                            "is_end":false,
-                            "next":[
-                                {
-                                    "name":"img",
-                                    "content":[
-                                        "height=\"1\"",
-                                        "width=\"1\"",
-                                        "style=\"display:none\"",
-                                        "src=\"https://www.facebook.com/tr?id=278690589151673&ev=PageView&noscript=1\""
-                                    ],
-                                    "is_end":true,
-                                    "pos_end":124
-                                }
-                            ]
+                            "pos_end":124
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "name":"body",
+            "content":[
+                "itemscope",
+                "itemtype=\"http://schema.org/WebSite\"",
+                "data-crumb=\"nnmd_WaXXN7TRoBxoY7LzEp5Zkgh1nGHkKOauDDBsUV\"",
+                "class=\"screen-fill-body\""
+            ],
+            "is_end":false,
+            "next":[
+                {
+                    "name":"meta",
+                    "content":[
+                        "itemprop=\"url\"",
+                        "content=\"https://www.npmjs.com/\""
+                    ],
+                    "is_end":false,
+                    "value":"",
+                    "next":null
                 },
                 {
-                    "name":"body",
+                    "name":"header",
                     "content":[
-                        "itemscope",
-                        "itemtype=\"http://schema.org/WebSite\"",
-                        "data-crumb=\"nnmd_WaXXN7TRoBxoY7LzEp5Zkgh1nGHkKOauDDBsUV\"",
-                        "class=\"screen-fill-body\""
                     ],
                     "is_end":false,
                     "next":[
                         {
-                            "name":"meta",
+                            "name":"div",
                             "content":[
-                                "itemprop=\"url\"",
-                                "content=\"https://www.npmjs.com/\""
-                            ],
-                            "is_end":false,
-                            "value":"",
-                            "next":null
-                        },
-                        {
-                            "name":"header",
-                            "content":[
+                                "class=\"header-item user-info-container\""
                             ],
                             "is_end":false,
                             "next":[
                                 {
                                     "name":"div",
                                     "content":[
-                                        "class=\"header-item user-info-container\""
+                                        "class=\"user-info\""
                                     ],
                                     "is_end":false,
                                     "next":[
                                         {
                                             "name":"div",
                                             "content":[
-                                                "class=\"user-info\""
+                                                "class=\"drop-down-menu-container\"",
+                                                "role=\"navigation\""
                                             ],
                                             "is_end":false,
                                             "next":[
                                                 {
-                                                    "name":"div",
+                                                    "name":"a",
                                                     "content":[
-                                                        "class=\"drop-down-menu-container\"",
-                                                        "role=\"navigation\""
+                                                        "id=\"user-info-drop-down-menu-toggle\"",
+                                                        "class=\"drop-down-menu-toggle\"",
+                                                        "href=\"#user-info-menu\"",
+                                                        "role=\"button\"",
+                                                        "aria-haspopup=\"true\"\r\n",
+                                                        "aria-owns=\"user-info-menu\""
                                                     ],
                                                     "is_end":false,
                                                     "next":[
                                                         {
-                                                            "name":"a",
+                                                            "name":"span",
                                                             "content":[
-                                                                "id=\"user-info-drop-down-menu-toggle\"",
-                                                                "class=\"drop-down-menu-toggle\"",
-                                                                "href=\"#user-info-menu\"",
-                                                                "role=\"button\"",
-                                                                "aria-haspopup=\"true\"\r\n",
-                                                                "aria-owns=\"user-info-menu\""
+                                                                "class=\"a11y-only\""
                                                             ],
                                                             "is_end":false,
-                                                            "next":[
-                                                                {
-                                                                    "name":"span",
-                                                                    "content":[
-                                                                        "class=\"a11y-only\""
-                                                                    ],
-                                                                    "is_end":false,
-                                                                    "value":"Toggle User Menu"
-                                                                }
-                                                            ]
-                                                        },
+                                                            "value":"Toggle User Menu"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "name":"div",
+                                                    "content":[
+                                                        "role=\"menu\"",
+                                                        "id=\"user-info-menu\"",
+                                                        "class=\"drop-down-menu\"",
+                                                        "aria-labelledby=\"user-info-drop-down-menu-toggle\""
+                                                    ],
+                                                    "is_end":false,
+                                                    "next":[
                                                         {
                                                             "name":"div",
                                                             "content":[
-                                                                "role=\"menu\"",
-                                                                "id=\"user-info-menu\"",
-                                                                "class=\"drop-down-menu\"",
-                                                                "aria-labelledby=\"user-info-drop-down-menu-toggle\""
+                                                                "class=\"drop-down-menu-section\""
                                                             ],
                                                             "is_end":false,
                                                             "next":[
                                                                 {
-                                                                    "name":"div",
-                                                                    "content":[
-                                                                        "class=\"drop-down-menu-section\""
-                                                                    ],
+                                                                    "name":"ul",
+                                                                    "content":null,
                                                                     "is_end":false,
                                                                     "next":[
                                                                         {
-                                                                            "name":"ul",
+                                                                            "name":"li",
                                                                             "content":null,
                                                                             "is_end":false,
                                                                             "next":[
                                                                                 {
-                                                                                    "name":"li",
-                                                                                    "content":null,
+                                                                                    "name":"a",
+                                                                                    "content":[
+                                                                                        "href=\"/settings/tokens\""
+                                                                                    ],
                                                                                     "is_end":false,
-                                                                                    "next":[
-                                                                                        {
-                                                                                            "name":"a",
-                                                                                            "content":[
-                                                                                                "href=\"/settings/tokens\""
-                                                                                            ],
-                                                                                            "is_end":false,
-                                                                                            "value":"Tokens"
-                                                                                        }
-                                                                                    ]
+                                                                                    "value":"Tokens"
                                                                                 }
                                                                             ]
                                                                         }
@@ -255,68 +253,68 @@ Return Object
                                     ]
                                 }
                             ]
-                        },
+                        }
+                    ]
+                },
+                {
+                    "name":"footer",
+                    "content":[
+                        "class=\"pane bg-npm-navy-1\""
+                    ],
+                    "is_end":false,
+                    "next":[
                         {
-                            "name":"footer",
+                            "name":"div",
                             "content":[
-                                "class=\"pane bg-npm-navy-1\""
+                                "class=\"container\""
                             ],
                             "is_end":false,
                             "next":[
                                 {
                                     "name":"div",
                                     "content":[
-                                        "class=\"container\""
+                                        "class=\"row\""
                                     ],
                                     "is_end":false,
                                     "next":[
                                         {
                                             "name":"div",
                                             "content":[
-                                                "class=\"row\""
+                                                "class=\"col-md-6 col-md-offset-3\""
                                             ],
                                             "is_end":false,
                                             "next":[
                                                 {
-                                                    "name":"div",
+                                                    "name":"hr",
                                                     "content":[
-                                                        "class=\"col-md-6 col-md-offset-3\""
+                                                        "class=\"divider-1\""
+                                                    ],
+                                                    "is_end":false,
+                                                    "value":"",
+                                                    "next":null
+                                                },
+                                                {
+                                                    "name":"ul",
+                                                    "content":[
+                                                        "class=\"list-unstyled h6 em-default\""
                                                     ],
                                                     "is_end":false,
                                                     "next":[
                                                         {
-                                                            "name":"hr",
+                                                            "name":"li",
                                                             "content":[
-                                                                "class=\"divider-1\""
-                                                            ],
-                                                            "is_end":false,
-                                                            "value":"",
-                                                            "next":null
-                                                        },
-                                                        {
-                                                            "name":"ul",
-                                                            "content":[
-                                                                "class=\"list-unstyled h6 em-default\""
+                                                                "class=\"pbl\""
                                                             ],
                                                             "is_end":false,
                                                             "next":[
                                                                 {
-                                                                    "name":"li",
+                                                                    "name":"a",
                                                                     "content":[
-                                                                        "class=\"pbl\""
+                                                                        "class=\"type-neutral-11\"",
+                                                                        "href=\"http://status.npmjs.org/\""
                                                                     ],
                                                                     "is_end":false,
-                                                                    "next":[
-                                                                        {
-                                                                            "name":"a",
-                                                                            "content":[
-                                                                                "class=\"type-neutral-11\"",
-                                                                                "href=\"http://status.npmjs.org/\""
-                                                                            ],
-                                                                            "is_end":false,
-                                                                            "value":"Registry Status"
-                                                                        }
-                                                                    ]
+                                                                    "value":"Registry Status"
                                                                 }
                                                             ]
                                                         }
@@ -325,24 +323,24 @@ Return Object
                                             ]
                                         }
                                     ]
-                                },
+                                }
+                            ]
+                        },
+                        {
+                            "name":"div",
+                            "content":[
+                                "class=\"txt-c container\""
+                            ],
+                            "is_end":false,
+                            "next":[
                                 {
-                                    "name":"div",
+                                    "name":"a",
                                     "content":[
-                                        "class=\"txt-c container\""
+                                        "class=\"npm-loves-you type-neutral-11\"",
+                                        "href=\"/\""
                                     ],
                                     "is_end":false,
-                                    "next":[
-                                        {
-                                            "name":"a",
-                                            "content":[
-                                                "class=\"npm-loves-you type-neutral-11\"",
-                                                "href=\"/\""
-                                            ],
-                                            "is_end":false,
-                                            "value":"\r\n npm loves you\r\n "
-                                        }
-                                    ]
+                                    "value":"\r\n npm loves you\r\n "
                                 }
                             ]
                         }
@@ -350,6 +348,8 @@ Return Object
                 }
             ]
         }
+    ]
+}
 
 
 ```

@@ -357,7 +357,7 @@ Return Object
 ## How is it works ?
 
 One entites :
-* HtmlContent : the content of your HTML file.{
+* HtmlContent : the content of your HTML file.
 
 ## Functions
 

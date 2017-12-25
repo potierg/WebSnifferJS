@@ -112,8 +112,32 @@ module.exports = function () {
     
             let content_line = html.slice(start_balise + 1 + balise_name.length, tmp_end_balise_char).trim();
             let content = null;
-            if (content_line != "")
+            if (content_line != "") {
                 content = content_line.split(" ");
+                let new_content = [];
+                let is_quote = false;
+                let tmp_content = "";
+                for (let i = 0; i < content.length; i++) {
+                    if (content[i].indexOf("\"") === -1 && is_quote == false) {
+                        new_content.push(content[i]);
+                    }
+                    else if (content[i].indexOf("\"") != content[i].lastIndexOf("\"") && is_quote == false)
+                        new_content.push(content[i]);
+                    else {
+                        if (content[i].indexOf("\"") !== -1 && is_quote == false) {
+                            is_quote = true;
+                        }                    
+                        tmp_content += " " + content[i];
+                        
+                        if (content[i].lastIndexOf("\"") && is_quote == true && content[i].lastIndexOf("\"") == content[i].length - 1 ) {
+                            is_quote = false;
+                            new_content.push(tmp_content.trim());
+                            tmp_content = "";
+                        }
+                    }
+                }
+                content = new_content;
+            }
     
             let new_balise = { name: balise_name, content: content, is_end: is_end };
             if (new_balise.is_end == true)

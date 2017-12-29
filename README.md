@@ -41,7 +41,7 @@ Page HTML
 </html>
 
 ```
-2. Exec function
+2. Parse functions
 
 In order to parse an HTML page there are two functions at your disposal:
 

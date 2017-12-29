@@ -77,13 +77,7 @@ module.exports = function () {
 
         for (let id in searchArray) {
             let s_obj_search = searchArray[id];
-            // CHECK BALISE NAME
-            if ((id == 0 || !s_obj_search.position) && s_obj_search.balise != browseObj[0].name) {
-                return false;
-            }
-
-            // SEARCH NEXT BALISE
-
+            
             let final_pos = 0;
             if (s_obj_search.position)
                 final_pos = s_obj_search.position;
@@ -91,6 +85,7 @@ module.exports = function () {
             let cpt_pos = -1;
 
             for (let current_obj_id in browseObj) {
+
                 let current_browse_obj = browseObj[current_obj_id];
 
                 if (!current_browse_obj)
@@ -109,16 +104,19 @@ module.exports = function () {
                                 }
                             }
                         }
-                        
-                        if (cpt_match == s_obj_search.content.length)
+
+                        if (cpt_match == s_obj_search.content.length) {
                             cpt_pos++;
+                        }
                     }
                     else
                         cpt_pos++;
                 }
 
-                if (cpt_pos == final_pos)
+                if (cpt_pos == final_pos) {
                     browseObj = browseObj[current_obj_id].next;
+                    break;
+                }
             }
             if (cpt_pos != final_pos)
                 return false;
@@ -135,7 +133,6 @@ module.exports = function () {
             let ret = this.execSearchFromObj([n_obj], searchArray);
             if (ret !== false)
                 return ret;
-            return false;
 
             if (n_obj.next) {
                 good_obj = this.recusrsiveBrowseObjectSearch(n_obj.next, searchArray);

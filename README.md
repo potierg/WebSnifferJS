@@ -197,11 +197,12 @@ balise 1 name | [balise 1 content 1, balise 1 content 2, ...] ; balise 2 name | 
 
 No 'number of occurrences' mean search the first by default.
 
+
 Ex : "body;nav|[id=\"menu\",class=\"test\"];ul;li|{3}"
 
 Go to the balise 'body' search in the first balise 'nav' with 'id' is 'menu' et 'class' is 'test' and go to 'ul' and return the content from the fouth 'li'.
 
-Exemple :
+Usage Exemple :
 
 ``` js
 const webSniffer = require('web-sniffer-js');

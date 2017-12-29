@@ -243,8 +243,8 @@ Return HTML Object
 
 ## Functions
 
-Name | Available | Description | Additionnal
----- | --------- | ----------- | -----------
+Name | Available | Description
+---- | --------- | -----------
 parseWithLink(link: `string`, callback: `function`) : `HtmlObject` | ALL | Parse HTML content from a link page
 parseWithFile(HtmlContent: `string`, callback: `function`) : `HtmlObject` | ALL | Parse HTML content
 search(stringSearch: `string`) : `HtmlObject` | ALL | Parse HTML content

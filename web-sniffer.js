@@ -39,6 +39,53 @@ module.exports = function () {
         callback(this.htmlObject);
     }
 
+    this.formatTable = function (obj) {
+
+        let array_head = [];
+        let obj_body = [];
+
+        if (obj[0] && obj[0].name == "thead" && obj[0].next && obj[0].next[0] && obj[0].next[0].next) {
+            for (let head_id in obj[0].next[0].next)
+                array_head.push(obj[0].next[0].next[head_id].value);
+        }
+
+        if (obj[1] && obj[1].name == "tbody" && obj[1].next) {
+
+            for (let body_id in obj[1].next) {
+                let body_part = obj[1].next[body_id];
+                let obj_part = {};
+
+                if (body_part.next) {
+                    for (let elem_id in body_part.next) {
+                        obj_part[array_head[elem_id]] = body_part.next[elem_id].value;
+                    }
+
+                    obj_body.push(obj_part);
+                }
+            }
+        }
+
+        if (obj[0] && obj[0].name == "div" && obj[0].content.indexOf("class=\"thead\"") !== -1) {
+            for (let head_id in obj[0].next)
+                array_head.push(obj[0].next[head_id].value);
+
+            for (let body_id = 1; body_id < obj.length; body_id++) {
+                let body_part = obj[body_id];
+                let obj_part = {};
+
+                if (body_part.next) {
+                    for (let elem_id in body_part.next) {
+                        obj_part[array_head[elem_id]] = body_part.next[elem_id].value;
+                    }
+
+                    obj_body.push(obj_part);
+                }
+            }
+        }
+
+        return obj_body;
+    }
+
     this.readSearchLine = function (line) {
         var search_object = [];
 
@@ -77,7 +124,7 @@ module.exports = function () {
 
         for (let id in searchArray) {
             let s_obj_search = searchArray[id];
-            
+
             let final_pos = 0;
             if (s_obj_search.position)
                 final_pos = s_obj_search.position;
@@ -157,8 +204,11 @@ module.exports = function () {
         if (loop < 0 || html.length <= 0)
             return null;
 
-        html = html.slice(html.indexOf("<"));
+        if (html.indexOf("<") === -1)
+            return null;
 
+        html = html.slice(html.indexOf("<"));
+        
         while (html.indexOf("<!--") === 0) {
             html = html.slice(html.indexOf("-->") + 3);
         }
@@ -225,7 +275,6 @@ module.exports = function () {
                 }
                 pos += 3 + baliseInfo.balise.name.length + match_end;
             }
-
             tmp_html = html.slice(pos);
         }
     }

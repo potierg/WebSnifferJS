@@ -4,6 +4,10 @@ module.exports = function () {
 
     this.htmlObject = {};
 
+    this.clean = function () {
+        this.htmlObject = {};
+    }
+
     this.clean_line = function (line) {
         if (!line) return line;
         while (line.indexOf("  ") !== -1) {
@@ -23,7 +27,8 @@ module.exports = function () {
 
             var t = this;
             resp.on("end", function () {
-                content = content.replace("\n", "").replace("\r", "").replace("<!DOCTYPE html>", "").replace("<!doctype html>", "");
+                content = content.replace("\n", "").replace("\r", "");
+                content = content.substring(content.indexOf("<html"));
                 t.htmlObject = t.parseHtml(t.clean_line(content));
 
                 callback(t.htmlObject);
@@ -33,7 +38,8 @@ module.exports = function () {
     }
 
     this.parseWithFile = function (HTMLContent = "", callback) {
-        var html = this.clean_line(HTMLContent.replace("\n", "").replace("\r", "").replace("<!DOCTYPE html>", "").replace("<!doctype html>", ""));
+        var html = this.clean_line(HTMLContent.replace("\n", "").replace("\r", ""));
+        html = html.substring(html.indexOf("<html"));
         this.htmlObject = this.parseHtml(this.clean_line(html));
 
         callback(this.htmlObject);
@@ -215,6 +221,11 @@ module.exports = function () {
 
         html = html.slice(html.indexOf("<"));
 
+        while (html.indexOf("<script") === 0) {
+            html = html.slice(html.indexOf("</script>") + 9);
+            html = html.slice(html.indexOf("<"));
+        }
+
         let firstBaliseInfo = this.getBaliseInfo(html);
         if (firstBaliseInfo.index == -1)
             return;
@@ -298,7 +309,7 @@ module.exports = function () {
 
         let balise_name = html.slice(start_balise + 1, end_balise);
 
-        if (['link'].indexOf(balise_name) !== -1)
+        if (['link', 'input'].indexOf(balise_name) !== -1)
             is_end = true;
 
         let content_line = html.slice(start_balise + 1 + balise_name.length, tmp_end_balise_char).trim();

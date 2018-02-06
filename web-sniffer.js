@@ -4,6 +4,10 @@ module.exports = function () {
 
     this.htmlObject = {};
 
+    this.clean = function () {
+        this.htmlObject = {};
+    }
+
     this.clean_line = function (line) {
         if (!line) return line;
         while (line.indexOf("  ") !== -1) {
@@ -23,7 +27,8 @@ module.exports = function () {
 
             var t = this;
             resp.on("end", function () {
-                content = content.replace("\n", "").replace("\r", "").replace("<!DOCTYPE html>", "").replace("<!doctype html>", "");
+                content = content.replace("\n", "").replace("\r", "");
+                content = content.substring(content.indexOf("<html"));
                 t.htmlObject = t.parseHtml(t.clean_line(content));
 
                 callback(t.htmlObject);
@@ -33,10 +38,58 @@ module.exports = function () {
     }
 
     this.parseWithFile = function (HTMLContent = "", callback) {
-        var html = this.clean_line(HTMLContent.replace("\n", "").replace("\r", "").replace("<!DOCTYPE html>", "").replace("<!doctype html>", ""));
+        var html = this.clean_line(HTMLContent.replace("\n", "").replace("\r", ""));
+        html = html.substring(html.indexOf("<html"));
         this.htmlObject = this.parseHtml(this.clean_line(html));
 
         callback(this.htmlObject);
+    }
+
+    this.formatTable = function (obj) {
+
+        let array_head = [];
+        let obj_body = [];
+
+        if (obj[0] && obj[0].name == "thead" && obj[0].next && obj[0].next[0] && obj[0].next[0].next) {
+            for (let head_id in obj[0].next[0].next)
+                array_head.push(obj[0].next[0].next[head_id].value);
+        }
+
+        if (obj[1] && obj[1].name == "tbody" && obj[1].next) {
+
+            for (let body_id in obj[1].next) {
+                let body_part = obj[1].next[body_id];
+                let obj_part = {};
+
+                if (body_part.next) {
+                    for (let elem_id in body_part.next) {
+                        obj_part[array_head[elem_id]] = body_part.next[elem_id].value;
+                    }
+
+                    obj_body.push(obj_part);
+                }
+            }
+        }
+
+        if (obj[0] && obj[0].name == "div" && obj[0].content.indexOf("class=\"thead\"") !== -1) {
+            for (let head_id in obj[0].next)
+                array_head.push(obj[0].next[head_id].value);
+
+            for (let body_id = 1; body_id < obj.length; body_id++) {
+                let body_part = obj[body_id];
+                let obj_part = {};
+
+                if (body_part.next) {
+                    for (let elem_id in body_part.next) {
+                        obj_part[array_head[elem_id]] = body_part.next[elem_id].value;
+                    }
+
+                    obj_body.push(obj_part);
+                }
+            }
+        }
+
+        return obj_body;
     }
 
     this.readSearchLine = function (line) {
@@ -77,7 +130,7 @@ module.exports = function () {
 
         for (let id in searchArray) {
             let s_obj_search = searchArray[id];
-            
+
             let final_pos = 0;
             if (s_obj_search.position)
                 final_pos = s_obj_search.position;
@@ -157,6 +210,9 @@ module.exports = function () {
         if (loop < 0 || html.length <= 0)
             return null;
 
+        if (html.indexOf("<") === -1)
+            return null;
+
         html = html.slice(html.indexOf("<"));
 
         while (html.indexOf("<!--") === 0) {
@@ -164,6 +220,11 @@ module.exports = function () {
         }
 
         html = html.slice(html.indexOf("<"));
+
+        while (html.indexOf("<script") === 0) {
+            html = html.slice(html.indexOf("</script>") + 9);
+            html = html.slice(html.indexOf("<"));
+        }
 
         let firstBaliseInfo = this.getBaliseInfo(html);
         if (firstBaliseInfo.index == -1)
@@ -225,7 +286,6 @@ module.exports = function () {
                 }
                 pos += 3 + baliseInfo.balise.name.length + match_end;
             }
-
             tmp_html = html.slice(pos);
         }
     }
@@ -249,7 +309,7 @@ module.exports = function () {
 
         let balise_name = html.slice(start_balise + 1, end_balise);
 
-        if (['link'].indexOf(balise_name) !== -1)
+        if (['link', 'input'].indexOf(balise_name) !== -1)
             is_end = true;
 
         let content_line = html.slice(start_balise + 1 + balise_name.length, tmp_end_balise_char).trim();

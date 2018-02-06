@@ -214,7 +214,7 @@ module.exports = function () {
             return null;
 
         html = html.slice(html.indexOf("<"));
-
+        
         while (html.indexOf("<!--") === 0) {
             html = html.slice(html.indexOf("-->") + 3);
         }

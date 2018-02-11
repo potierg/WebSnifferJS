@@ -207,14 +207,11 @@ module.exports = function () {
         html = this.clean_line(html);
         let content = [];
 
-        if (loop < 0 || html.length <= 0)
-            return null;
-
-        if (html.indexOf("<") === -1)
+        if (loop < 0 || html.length <= 0 || html.indexOf("<") === -1)
             return null;
 
         html = html.slice(html.indexOf("<"));
-        
+
         while (html.indexOf("<!--") === 0) {
             html = html.slice(html.indexOf("-->") + 3);
         }
@@ -344,6 +341,15 @@ module.exports = function () {
         let new_balise = { name: balise_name, content: content, is_end: is_end };
         if (new_balise.is_end == true)
             new_balise["pos_end"] = tmp_end_balise_char;
+
+        var str_content = html.substring(html.indexOf("</" + new_balise.name + ">") + 3 + new_balise.name.length);
+        var res_content = str_content.trim();
+        if (str_content.indexOf('<') !== -1)
+            res_content = str_content.substring(0, str_content.indexOf('<')).trim();
+        
+        if (res_content.length > 0) {
+            new_balise["str"] = res_content;
+        }
 
         return { index: tmp_end2, balise: new_balise };
     }
